@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Details - Anemia Predictor</title>
+    <style>
+        /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 50px;
+            background: url('static/photo.jpg') no-repeat center center/cover;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn-check {
+            padding: 10px 20px;
+            background-color: #f05454;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px); /* Adjust height to account for header */
+        }
+
+        .form-container {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Anemia</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Predict</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <a href="{{ url_for('check') }}" class="btn-check">Check</a>
+        </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <h2>Enter the details:</h2>
+            <form action="{{ url_for('predict') }}" method="post">
+                <div class="form-group">
+                    <label for="gender">Gender (0 for Female, 1 for Male):</label>
+                    <input type="text" id="gender" name="gender" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="hemoglobin">Hemoglobin (Range: 7-16):</label>
+                    <input type="text" id="hemoglobin" name="hemoglobin" placeholder="12">
+                </div>
+                <div class="form-group">
+                    <label for="mch">Mean Corpuscular Hemoglobin (Range: 16-30):</label>
+                    <input type="text" id="mch" name="mch" placeholder="20">
+                </div>
+                <div class="form-group">
+                    <label for="mchc">Mean Corpuscular Hemoglobin Concentration (Range: 28-34):</label>
+                    <input type="text" id="mchc" name="mchc" placeholder="32">
+                </div>
+                <div class="form-group">
+                    <label for="mcv">Mean Corpuscular Volume (Range: 70-100):</label>
+                    <input type="text" id="mcv" name="mcv" placeholder="85">
+                </div>
+                <button type="submit" class="btn-submit">Submit for Prediction</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
